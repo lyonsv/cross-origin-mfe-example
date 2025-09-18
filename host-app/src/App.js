@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SafeRemoteButton, SafeRemoteHeader } from './RemoteComponents';
 import { FallbackButton, FallbackHeader } from './FallbackComponents';
+import { getRemoteUrl, getRemoteEntryUrl } from './constants';
 import './App.css';
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
   React.useEffect(() => {
     const testRemoteConnection = async () => {
       try {
-        const response = await fetch('http://localhost:3001/remoteEntry.js');
+        const response = await fetch(getRemoteEntryUrl());
         if (response.ok) {
           setRemoteStatus('✅ Remote app accessible');
           console.log('✅ Remote app is accessible');
@@ -104,7 +105,7 @@ function App() {
         <h3>🔍 Debug Info:</h3>
         <div className="debug-info">
           <p><strong>Host App:</strong> Running on {window.location.origin}</p>
-          <p><strong>Remote URL:</strong> {process.env.NODE_ENV === 'production' ? 'Production Remote' : 'http://localhost:3001'}</p>
+          <p><strong>Remote URL:</strong> {getRemoteUrl()}</p>
           <p><strong>Remote Status:</strong> {remoteStatus}</p>
           <p><strong>Mode:</strong> {useRemote ? 'Remote Components' : 'Fallback Components'}</p>
         </div>
