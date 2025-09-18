@@ -11,17 +11,19 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\\.jsx?$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-react'],
+            presets: [
+              ['@babel/preset-react', { runtime: 'automatic' }]
+            ],
           },
         },
       },
       {
-        test: /\\.css$/,
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
     ],
@@ -36,10 +38,12 @@ module.exports = {
         react: {
           singleton: true,
           requiredVersion: '^18.2.0',
+          eager: true,
         },
         'react-dom': {
           singleton: true,
           requiredVersion: '^18.2.0',
+          eager: true,
         },
       },
     }),
