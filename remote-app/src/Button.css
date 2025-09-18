@@ -1,0 +1,54 @@
+.remote-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.remote-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.remote-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.remote-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.remote-button--primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.remote-button--primary:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.remote-button--secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.remote-button--secondary:hover:not(:disabled) {
+  background-color: #5a6268;
+}
+
+.remote-button--success {
+  background-color: #28a745;
+  color: white;
+}
+
+.remote-button--success:hover:not(:disabled) {
+  background-color: #1e7e34;
+}
