@@ -2,6 +2,14 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": null,
+  "env": {
+    "REMOTE_URL": "https://cross-origin-mfe-example.vercel.app"
+  },
+  "build": {
+    "env": {
+      "REMOTE_URL": "https://cross-origin-mfe-example.vercel.app"
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",

@@ -3,13 +3,18 @@ const { ModuleFederationPlugin } = require('webpack').container;
 
 // Determine the remote URL based on environment
 const getRemoteUrl = () => {
-  if (process.env.NODE_ENV === 'production') {
+  // Check if we're in production build (not just NODE_ENV)
+  const isProduction = process.env.NODE_ENV === 'production' || process.env.VERCEL === '1';
+  
+  if (isProduction) {
     // In production, use the environment variable for the remote URL
-    return process.env.REMOTE_URL || 'https://your-remote-app-domain.vercel.app';
+    const remoteUrl = process.env.REMOTE_URL || 'https://cross-origin-mfe-example.vercel.app';
+    console.log('🔗 Production build using remote URL:', remoteUrl);
+    return remoteUrl;
   }
   // In development, use localhost
   const remoteUrl = 'http://localhost:3001';
-  console.log('🔗 Host app configured to connect to remote at:', remoteUrl);
+  console.log('🔗 Development build using remote URL:', remoteUrl);
   return remoteUrl;
 };
 
