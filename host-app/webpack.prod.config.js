@@ -1,6 +1,14 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 
+// Determine the remote URL based on environment
+const getRemoteUrl = () => {
+  if (process.env.NODE_ENV === 'production') {
+    return process.env.REMOTE_URL || 'https://cross-origin-mfe-example.vercel.app';
+  }
+  return 'http://localhost:3001';
+};
+
 module.exports = {
   mode: 'production',
   entry: './src/index.js',
@@ -32,7 +40,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'hostApp',
       remotes: {
-        remoteApp: `remoteApp@\${process.env.REMOTE_URL || 'https://cross-origin-mfe-example.vercel.app/'}/remoteEntry.js`,
+        remoteApp: `remoteApp@${getRemoteUrl()}/remoteEntry.js`,
       },
       shared: {
         react: {
