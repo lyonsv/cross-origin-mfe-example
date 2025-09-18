@@ -2,14 +2,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": null,
-  "env": {
-    "REMOTE_URL": "@remote_url"
-  },
-  "build": {
-    "env": {
-      "REMOTE_URL": "@remote_url"
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
