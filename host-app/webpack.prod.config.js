@@ -32,7 +32,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'hostApp',
       remotes: {
-        remoteApp: `remoteApp@\${process.env.REMOTE_URL || 'https://your-remote-app-domain.vercel.app'}/remoteEntry.js`,
+        remoteApp: `remoteApp@\${process.env.REMOTE_URL || 'https://cross-origin-mfe-example.vercel.app/'}/remoteEntry.js`,
       },
       shared: {
         react: {
